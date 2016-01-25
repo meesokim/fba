@@ -1,0 +1,17 @@
+--- fba-orig/src/burn/drv/konami/d_asterix.cpp	2015-11-03 20:25:59.053925600 +0900
++++ fba/src/burn/drv/konami/d_asterix.cpp	2016-01-25 20:02:43.001159300 +0900
+@@ -499,10 +499,10 @@
+ 	SekMapMemory(K053245Ram[0],	0x180000, 0x1807ff, MAP_RAM);
+ 	SekMapMemory(Drv68KRAM1,	0x180800, 0x180fff, MAP_RAM);
+ 	SekMapMemory(DrvPalRAM,		0x280000, 0x280fff, MAP_RAM);
+-	SekSetWriteWordHandler(0,	asterix_main_write_word);
+-	SekSetWriteByteHandler(0,	asterix_main_write_byte);
+-	SekSetReadWordHandler(0,	asterix_main_read_word);
+-	SekSetReadByteHandler(0,	asterix_main_read_byte);
++	SekSetWriteWordHandler(0,	(pSekWriteWordHandler &)asterix_main_write_word);
++	SekSetWriteByteHandler(0,	(pSekWriteByteHandler &)asterix_main_write_byte);
++	SekSetReadWordHandler(0,	(pSekReadWordHandler &)asterix_main_read_word);
++	SekSetReadByteHandler(0,	(pSekReadByteHandler &)asterix_main_read_byte);
+ 	SekClose();
+ 
+ 	ZetInit(0);

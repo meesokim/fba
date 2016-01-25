@@ -1,0 +1,17 @@
+--- fba-orig/src/burn/drv/konami/d_xexex.cpp	2015-11-03 20:25:58.943914600 +0900
++++ fba/src/burn/drv/konami/d_xexex.cpp	2016-01-25 20:07:41.246980900 +0900
+@@ -563,10 +563,10 @@
+ 	SekMapMemory((UINT8*)K053250Ram,	0x0c6000, 0x0c7fff, MAP_RAM);
+ 	SekMapMemory(Drv68KROM + 0x080000,	0x100000, 0x17ffff, MAP_ROM);
+ 	SekMapMemory(DrvPalRAM,			0x1b0000, 0x1b1fff, MAP_RAM);
+-	SekSetWriteWordHandler(0,		xexex_main_write_word);
+-	SekSetWriteByteHandler(0,		xexex_main_write_byte);
+-	SekSetReadWordHandler(0,		xexex_main_read_word);
+-	SekSetReadByteHandler(0,		xexex_main_read_byte);
++	SekSetWriteWordHandler(0,		(pSekWriteWordHandler &)xexex_main_write_word);
++	SekSetWriteByteHandler(0,		(pSekWriteByteHandler &)xexex_main_write_byte);
++	SekSetReadWordHandler(0,		(pSekReadWordHandler &)xexex_main_read_word);
++	SekSetReadByteHandler(0,		(pSekReadByteHandler &)xexex_main_read_byte);
+ 	SekClose();
+ 
+ 	ZetInit(0);
