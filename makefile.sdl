@@ -129,7 +129,7 @@ incdir	= $(foreach dir,$(alldir),-I$(srcdir)$(dir)) -I$(objdir)dep/generated -I/
 ifeq ($(OS),Windows_NT)
 lib	= -static -lstdc++ -lpng -lmingw32 -Wl,-Bdynamic -lSDL -lz -lopengl32 -lglu32
 else
-lib	= -lstdc++ -lSDL -lGL -lGLU -lz
+lib	= -lstdc++ -lSDL -lz
 endif
 
 
